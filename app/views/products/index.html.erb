@@ -1,0 +1,78 @@
+<!--<div class="w-full">-->
+  <%# if notice.present? %>
+<!--    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%#= notice %></p>-->
+  <%# end %>
+
+
+<!--  <div class="flex justify-between items-center">-->
+<!--    <h1 class="font-bold text-4xl">Products</h1>-->
+    <%#= link_to 'New product', new_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%# @products.each do |product| %>
+      <%#= button_to "Buy this product", checkout_create_path, params: {id: product.id}, remote: true, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <%# end %>
+<!--  </div>-->
+
+<!--  <div id="products" class="min-w-full">-->
+    <%#= render @products %>
+<!--  </div>-->
+<!--</div>-->
+
+
+
+<!--<p id="notice"><%#= notice %></p>-->
+<!--<h1>Products</h1>-->
+
+<!--<table class="table-auto">-->
+<!--  <thead>-->
+<!--  <tr class="grid cols ">-->
+<!--    <th>Name</th>-->
+<!--    <th>Price</th>-->
+<!--    <th></th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+  <%# @products.each do |product| %>
+<!--  <tr class="flex space-x-4 ">-->
+<!--    <td><%#= product.name %></td>-->
+<!--    <td><%#= product.price %></td>-->
+<!--    <td><%#= link_to 'Show', product %></td>-->
+<!--    <td><%#= link_to 'Edit', edit_product_path(product) %> </td>-->
+<!--    <td><%#= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure' } %></td>-->
+<!--  </tr>-->
+    <%# end %>
+
+<!--  </tbody>-->
+<!--</table>-->
+
+<%#= link_to 'New product', new_product_path, class: "rounded-lg py-1 px-3 bg-blue-600 text-white block font-medium" %>
+
+<table class="table-fixed">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>PAYMENT</th>
+    <th>Sales count</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= number_to_currency(product.price/100) %></td>
+    <td><%= button_to "Buy now!", checkout_create_path, params: {id: product.id}, remote: true %></td>
+    <td><%= product.sales_count %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+  </tr>
+  <tr>
+
+    <% end %>
+
+  </tbody>
+</table>
+
+<%= link_to 'New Product', new_product_path, class: "w-32 flex items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
